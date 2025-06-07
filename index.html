@@ -1,21 +1,77 @@
 <!doctype html>
-<html lang="dk"></html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bloggen</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <div id="posts">
-  <script src="script.js"></script>
+<html lang="dk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap");
 
-  <!-- Dette er til at teste lokalt  -->
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background-color: #0f0f0f;
+        color: #e5e7eb;
+        line-height: 1.7;
+      }
 
-<script src="local-reload-script.js"></script>
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
 
-  <!-- Dette er til at teste lokalt  -->
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
 
-</body>
+      ::-webkit-scrollbar-track {
+        background: #1a1a1a;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #404040;
+        border-radius: 3px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      /* Line clamp utility */
+      .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      /* Backdrop blur fallback */
+      .backdrop-blur-sm {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+
+      /* Selection styling */
+      ::selection {
+        background-color: #374151;
+        color: #f3f4f6;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-950 text-gray-200 antialiased">
+    <div id="posts"></div>
+
+    <script src="script.js"></script>
+
+    <!-- Dette er til at teste lokalt -->
+    <script src="local-reload-script.js"></script>
+    <!-- Dette er til at teste lokalt -->
+  </body>
 </html>
