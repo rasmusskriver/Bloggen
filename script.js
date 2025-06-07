@@ -10,7 +10,14 @@ async function fetchPosts() {
 
     const postsContainer = document.getElementById("posts");
     postsContainer.innerHTML = posts
-      .map((post) => `<h1>${post.title}</h1><p>${post.content}</p>`)
+      .map(
+        (post) => `
+      <article class="mb-8">
+        <h1 class="text-2xl font-semibold mb-2 hover:underline cursor-pointer text-gray-900">${post.title}</h1>
+        <p class="text-gray-700 leading-relaxed">${post.content}</p>
+      </article>
+    `,
+      )
       .join("");
   } catch (error) {
     console.error("Fejl ved hentning af posts:", error);
