@@ -13,15 +13,7 @@
 
   <!-- Dette er til at teste lokalt  -->
 
-<script>
-  const socket = new WebSocket('ws://localhost:3000');
-  socket.addEventListener('message', event => {
-    if(event.data === 'reload'){
-      console.log('Genindlæser siden pga. filændring');
-      location.reload();
-    }
-  });
-</script>
+<script src="local-reload-script.js"></script>
 
   <!-- Dette er til at teste lokalt  -->
 
