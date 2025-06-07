@@ -1,4 +1,9 @@
-const postFileNames = ["post1.json", "post2.json", "post3.json"];
+// *** ÆNDRING ***: Fjern listen af filnavne
+// const postFileNames = ["post1.json", "post2.json", "post3.json"];
+
+// *** NYT ***: Angiv stien til din samlede JSON-fil
+const postsJsonPath = "./posts/posts.json";
+
 let allPosts = [];
 
 // Funktion til at konvertere titel til URL-venlig slug (stadig nyttig som unik ID)
@@ -18,7 +23,6 @@ function findPostBySlug(slug) {
   return allPosts.find((post) => createSlug(post.title) === slug);
 }
 
-// *** NY FUNKTION ***
 // En simpel handler til at vise en enkelt post baseret på dens slug
 function showPostBySlug(slug) {
   const post = findPostBySlug(slug);
@@ -27,14 +31,14 @@ function showPostBySlug(slug) {
   }
 }
 
-// Funktion til at vise alle posts
+// Funktion til at vise alle posts (INGEN ÆNDRINGER HER)
 function showAllPosts() {
   document.title = "Bloggen"; // Sæt sidetitlen
   const postsContainer = document.getElementById("posts");
   postsContainer.innerHTML = `
     <div class="max-w-2xl mx-auto px-6 py-12">
       <header class="text-center mb-16">
-        <h1 class="text-4xl font-light text-gray-100 mb-4 tracking-wide">Blog</h1>
+        <h1 class="text-4xl font-light text-gray-100 mb-4 tracking-wide">Bloggen</h1>
         <div class="w-16 h-px bg-gray-600 mx-auto"></div>
       </header>
       <div class="space-y-12">
@@ -71,7 +75,7 @@ function showAllPosts() {
   `;
 }
 
-// Funktion til at vise enkelt post
+// Funktion til at vise enkelt post (INGEN ÆNDRINGER HER)
 function showSinglePost(post) {
   document.title = `${post.title} - Bloggen`; // Sæt sidetitlen
   const postsContainer = document.getElementById("posts");
@@ -122,18 +126,18 @@ function showSinglePost(post) {
   `;
 }
 
-// *** FJERNET ***: Alt routing-logik er væk (navigateToPost, navigateToHome, handleRoute, popstate listener)
-
-// Hent posts og initialiser
+// *** STOR ÆNDRING HER ***: Forenklet funktion til at hente den ene fil
 async function fetchPosts() {
   try {
-    allPosts = await Promise.all(
-      postFileNames.map((fileName) =>
-        fetch(`./posts/${fileName}`).then((res) => res.json()),
-      ),
-    );
+    // Hent den ene fil
+    const response = await fetch(postsJsonPath);
+    // Konverter svaret til JSON. Resultatet vil være et array af posts.
+    allPosts = await response.json();
 
-    // *** ÆNDRING HER ***: Kald showAllPosts() direkte i stedet for handleRoute()
+    // Sortér eventuelt posts efter dato (nyeste først) - dette er god praksis
+    allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // Vis alle posts
     showAllPosts();
   } catch (error) {
     console.error("Fejl ved hentning af posts:", error);
@@ -149,4 +153,5 @@ async function fetchPosts() {
   }
 }
 
+// Start processen
 fetchPosts();
