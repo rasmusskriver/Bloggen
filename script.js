@@ -81,13 +81,17 @@ function showSinglePost(post) {
   const postsContainer = document.getElementById("posts");
   postsContainer.innerHTML = `
     <div class="min-h-screen">
-      <nav class="fixed top-0 left-0 right-0 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800 z-10">
-        <div class="max-w-4xl mx-auto px-6 py-4">
-          <button onclick="showAllPosts()"
-                  class="text-gray-400 hover:text-white transition-colors duration-300 font-light text-sm tracking-wide">
-            ← Tilbage til blog
-          </button>
-        </div>
+  <nav class="fixed top-0 left-0 right-0 bg-gray-900/60 backdrop-blur-sm border-b border-gray-700 z-20">
+    <div class="max-w-4xl mx-auto px-4 py-2 flex items-center">
+      <button onclick="showAllPosts()"
+              class="text-gray-400 hover:text-gray-200 transition-colors duration-200 font-normal text-xs tracking-wide flex items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+        Tilbage til blog oversigt
+      </button>
+    </div>
+  </nav>
       </nav>
 
       <main class="pt-20 pb-16">
