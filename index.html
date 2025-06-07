@@ -10,5 +10,20 @@
   <h1>Bloggen</h1>
   <div id="posts">
   <script src="script.js"></script>
+
+  <!-- Dette er til at teste lokalt  -->
+
+<script>
+  const socket = new WebSocket('ws://localhost:3000');
+  socket.addEventListener('message', event => {
+    if(event.data === 'reload'){
+      console.log('Genindlæser siden pga. filændring');
+      location.reload();
+    }
+  });
+</script>
+
+  <!-- Dette er til at teste lokalt  -->
+
 </body>
 </html>
